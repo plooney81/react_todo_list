@@ -39,7 +39,7 @@ class ToDos extends Component{
 
     completedLi = (index) => {
         const todos = [...this.state.todos];
-        const completed = todos.splice(index, 1);
+        const completed = this.state.completedTodos.concat(todos.splice(index, 1));
         this.setState({
             todos: todos,
             completedTodos: completed
@@ -60,6 +60,7 @@ class ToDos extends Component{
         const completedTodos = this.state.completedTodos;
         return (
             <div>
+                <h4>Yet another Todo List</h4><br/>
                 <Form.Group>
                   <InputGroup className="mb-3">
                     <InputGroup.Prepend>
@@ -84,7 +85,7 @@ class ToDos extends Component{
                     {todoList.map((indTodo, index) => {
                         return <li className="m-5" key={index}>
                             {indTodo}
-                            <Button className="ml-5" variant="danger" onClick={()=>{this.completedLi(index)}}>Done</Button>
+                            <Button className="ml-5" variant="success" onClick={()=>{this.completedLi(index)}}>Done</Button>
                             <Button className="ml-1" variant="danger" onClick={()=>{this.removeLi(index)}}>Remove</Button>
                         </li>
                     })}
@@ -95,7 +96,7 @@ class ToDos extends Component{
                     {completedTodos.map((indTodo, index) => {
                         return <li className="m-5" key={index}>
                             <strike>{indTodo}</strike>
-                            <Button className="ml-5" variant="danger" onClick={()=>{this.notCompletedLi(index)}}>NotDone</Button>
+                            <Button className="ml-5" variant="warning" onClick={()=>{this.notCompletedLi(index)}}>NotDone</Button>
                             <Button className="ml-1" variant="danger" onClick={()=>{this.removeLi(index)}}>Remove</Button>
                         </li>
                     })}
