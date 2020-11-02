@@ -36,6 +36,13 @@ class ToDos extends Component{
             todos: todos
         })
     }
+    removeCompletedLi = (index) => {
+        const completedTodos = [...this.state.completedTodos];
+        completedTodos.splice(index, 1);
+        this.setState({
+            completedTodos: completedTodos
+        })
+    }
 
     completedLi = (index) => {
         const todos = [...this.state.todos];
@@ -97,7 +104,7 @@ class ToDos extends Component{
                         return <li className="m-5" key={index}>
                             <strike>{indTodo}</strike>
                             <Button className="ml-5" variant="warning" onClick={()=>{this.notCompletedLi(index)}}>NotDone</Button>
-                            <Button className="ml-1" variant="danger" onClick={()=>{this.removeLi(index)}}>Remove</Button>
+                            <Button className="ml-1" variant="danger" onClick={()=>{this.removeCompletedLi(index)}}>Remove</Button>
                         </li>
                     })}
                 </ul>
