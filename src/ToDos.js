@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
-import FormGroup from 'react-bootstrap/FormGroup';
 import { Badge, Form } from "react-bootstrap";
 
 class ToDos extends Component{
@@ -68,24 +67,27 @@ class ToDos extends Component{
         return (
             <div>
                 <h4>Yet another Todo List</h4><br/>
-                <Form.Group>
-                  <InputGroup className="mb-3">
-                    <InputGroup.Prepend>
-                        <InputGroup.Text id="basic-addon1" onChange={this.handleChange} value={this.state.newTodo}>New Task</InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <FormControl
-                        placeholder="Do something amazing"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                        type="text"
-                        value={this.state.newTodo}
-                        onChange={this.handleChange}
-                    />
-                    <Button variant="primary" type="submit" onClick={this.addTask}>Add</Button>
-                    </InputGroup>
-                    {/* <button type="submit">Add Task</button> */}
-                    
-                </Form.Group>
+                <Form onSubmit={this.addTask}>
+                    <Form.Group>
+                    <InputGroup className="mb-3">
+                        <InputGroup.Prepend>
+                            <InputGroup.Text id="basic-addon1" onChange={this.handleChange} value={this.state.newTodo}>New Task</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                            placeholder="Do something amazing"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                            type="text"
+                            value={this.state.newTodo}
+                            onChange={this.handleChange}
+                        />
+                        <Button variant="primary" type="submit">Add</Button>
+                        </InputGroup>
+                        {/* <button type="submit">Add Task</button> */}
+                        
+                    </Form.Group>
+                </Form>
+                
 
                 {todoList.length > 0 ? <div><h4 className="mt-5"><Badge variant="info">My Tasks</Badge></h4><br/><hr/></div> : ''}
                 <ul>

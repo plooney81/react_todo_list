@@ -7,6 +7,7 @@ Think you have seen a Todo List app...well think again!
 - [**How to Use**](#how-to-use)
 - [**Requirements**](#requirements)
 - [**What I Learned**](#what-i-learned)
+- [**Still Todo**](#still-todo)
 
 ## **General**
 
@@ -57,7 +58,6 @@ The Requirements for this exercise were as follows:
 
 
 ## **What I Learned**
-
 I learned some valuable lessons throughout this exercise. These included:
 * The differences between syntaxs of React-bootstrap forms vs. regular forms.
 * Array.prototype.push() mutates the array in-place, i.e. if you do not use the [...]  (the spread operator) syntax when making a copy of the array, you must then use the .concat() method instead.
@@ -71,3 +71,10 @@ I learned some valuable lessons throughout this exercise. These included:
 ```JSX 
     <Button className="ml-1" variant="danger" onClick={()=>{this.removeLi.bind(this, index)}}>Remove</Button> 
 ```
+
+## **Still Todo**
+* Refactor solution to make DRYer.
+* Make the a specific todo a component.
+* Instead of having two lists, one for completed and one for uncompleted on the state, make it a list of objects...This will help with:
+  * Decreasing the number of methods
+  * The ability to pass states and functions as props to other components.
