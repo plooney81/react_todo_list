@@ -60,7 +60,8 @@ The Requirements for this exercise were as follows:
 
 I learned some valuable lessons throughout this exercise. These included:
 * The differences between syntaxs of React-bootstrap forms vs. regular forms.
-* Array.prototype.push() mutates the array in-place, i.e. if you do not use the ... syntax when making a copy of the array, you must then use the .concat() method instead.
+* Array.prototype.push() mutates the array in-place, i.e. if you do not use the [...]  (the spread operator) syntax when making a copy of the array, you must then use the .concat() method instead.
+  * The [concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method is used to merge two or more arrays. This method does not change the existing arrays, but instead returns a new array.
 * Methods with arguments in the call must be surrounded by anonymous arrow functions.
 ```JSX 
     <Button className="ml-1" variant="danger" onClick={()=>{this.removeLi(index)}}>Remove</Button> 
