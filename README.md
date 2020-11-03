@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# **The Todo List to Rule them All** <!-- omit in toc -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Think you have seen a Todo List app...well think again!
 
-## Available Scripts
+- [**General**](#general)
+- [**How it works**](#how-it-works)
+- [**How to Use**](#how-to-use)
+- [**Requirements**](#requirements)
+- [**What I Learned**](#what-i-learned)
 
-In the project directory, you can run:
+## **General**
 
-### `npm start`
+This Todo List Project was built using the following technologies and libraries:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
+<img src="https://img.shields.io/badge/bootstrap%20-%23563D7C.svg?&style=for-the-badge&logo=bootstrap&logoColor=white"/>
+<img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
+<img src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
+<img src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## **How it works**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The Todo List app uses React components, states, and forms to manipulate the DOM depending on the users input.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```JavaScript
+    addTask  = (event) => {
+        event.preventDefault();
+        const todos = this.state.todos;
+        this.setState({
+            newTodo: '',
+            todos: todos.concat(this.state.newTodo)
+        })
+    }
+```
+```JSX
+    <Button variant="primary" type="submit" onClick={this.addTask}>Add</Button>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## **How to Use**
+1. Add new todo items by typing them into the text box and then clicking add.
+   * Users can add as many items as they would like.
+2. After adding a new Item, the todo will show under the badge that reads, My Tasks.
+3. You will notice there are two buttons that accompany the task.
+4. The first button is the done button. The second is the remove button.
+5. Once a user completes a taks, they can select the done button corresponding to that task. 
+6. When it is clicked, the task will be moved from the my task list to the completed tasks list. Furthermore, the task will appear with a line through it...or striked out.
+7. The user can move a striked out or completed task back to the uncompleted tasks by clicking the orange notdone button that took the done buttons place.
+8. At any point, the user can select the remove button next to a task to get rid of the task completely.
+<img src="./how_to.gif"/>
 
-### `npm run eject`
+## **Requirements**
+The Requirements for this exercise were as follows: 
+* Implement a todo list app using our React and React-form knowledge
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## **What I Learned**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I learned some valuable lessons throughout this exercise. These included:
+* The differences between syntaxs of React-bootstrap forms vs. regular forms.
+* Array.prototype.push() mutates the array in-place, i.e. if you do not use the ... syntax when making a copy of the array, you must then use the .concat() method instead.
+* Methods with arguments in the call must be surrounded by anonymous arrow functions.
+```JSX 
+    <Button className="ml-1" variant="danger" onClick={()=>{this.removeLi(index)}}>Remove</Button> 
+```
+  * Has to do with binding the "this" keyword so we can use the keyword in the function. 
+  * We could also accomplish it like this: 
+```JSX 
+    <Button className="ml-1" variant="danger" onClick={()=>{this.removeLi.bind(this, index)}}>Remove</Button> 
+```
